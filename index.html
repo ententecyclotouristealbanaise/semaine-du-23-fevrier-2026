@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actu Vélo · Semaine du 24 fév. 2026 · ECTA Saint-Alban</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --marine:   #0b1a35;
+    --marine-m: #142444;
+    --marine-l: #1e3260;
+    --rose:     #e8296e;
+    --rose-vif: #ff4d8d;
+    --rose-pale:#ffd6e7;
+    --blanc:    #fdf8fb;
+    --gris:     #c4bbc5;
+    --noir:     #060d1a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--marine);
+    color: var(--blanc);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    min-height: 100vh;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* ══ HEADER ══ */
+  header {
+    background: var(--noir);
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    right: -80px; top: -80px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    border: 3px solid rgba(232,41,110,0.1);
+    pointer-events: none;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    right: -40px; top: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 3px solid rgba(232,41,110,0.18);
+    pointer-events: none;
+  }
+
+  .header-top-bar {
+    background: var(--rose);
+    padding: 6px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: white;
+  }
+
+  .header-body {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 28px 28px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .logo-wrap { display: flex; align-items: center; gap: 18px; }
+
+  /* ══ ROUE : le SVG entier tourne — son centre cx=50,cy=50 est
+     exactement le centre du viewBox 0 0 100 100, donc rotation parfaite ══ */
+  .roue-svg {
+    width: 70px; height: 70px; flex-shrink: 0;
+    animation: spin 18s linear infinite;
+    display: block;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .club-info h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.1rem; font-weight: 900;
+    color: var(--blanc); line-height: 1; letter-spacing: -0.5px;
+  }
+  .club-info h1 span { color: var(--rose-vif); }
+  .club-info p {
+    font-size: 0.75rem; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gris); margin-top: 5px;
+  }
+
+  .header-date .label {
+    font-size: 0.7rem; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gris); margin-bottom: 4px;
+  }
+  .header-date .week {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--blanc);
+  }
+  .header-date .races {
+    margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px;
+  }
+
+  .tag {
+    background: rgba(232,41,110,0.18);
+    border: 1px solid rgba(232,41,110,0.4);
+    color: var(--rose-vif);
+    font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 1px; padding: 3px 9px;
+    text-transform: uppercase; border-radius: 2px;
+  }
+
+  /* ══ DIVIDER ══ */
+  .divider {
+    background: linear-gradient(90deg, var(--rose) 0%, #b5005a 100%);
+    padding: 11px 28px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; font-size: 0.72rem; letter-spacing: 1.5px;
+    text-transform: uppercase; font-weight: 600; color: white;
+    flex-wrap: wrap;
+  }
+  .divider .sep { opacity: 0.45; }
+
+  /* ══ MAIN ══ */
+  main {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 44px 28px 64px;
+  }
+
+  .section-label {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 22px;
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--rose);
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: rgba(232,41,110,0.25);
+  }
+
+  /* ══ UNE ══ */
+  .une { margin-bottom: 44px; animation: fadeUp 0.5s ease 0.1s both; }
+
+  .une-card {
+    display: grid; grid-template-columns: 1fr 370px;
+    background: var(--marine-m);
+    border: 1px solid rgba(232,41,110,0.2);
+    overflow: hidden;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+    position: relative;
+  }
+  .une-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--rose), var(--rose-vif));
+  }
+  .une-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(232,41,110,0.3);
+  }
+
+  .une-text { padding: 40px 36px; }
+
+  .une-tag {
+    display: inline-block;
+    background: var(--rose); color: white;
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 4px 12px; margin-bottom: 18px;
+  }
+
+  .une-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 900; line-height: 1.15;
+    color: var(--blanc); margin-bottom: 16px;
+  }
+
+  .une-text p {
+    font-size: 1rem; line-height: 1.75;
+    color: var(--gris); margin-bottom: 24px;
+  }
+
+  /* ══ TV BADGES ══ */
+  .tv-row {
+    display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 22px;
+    align-items: center;
+  }
+  .tv-label {
+    font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gris); margin-right: 4px;
+  }
+  .tv-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 5px 11px; border-radius: 3px;
+    transition: opacity 0.2s;
+  }
+  .tv-badge:hover { opacity: 0.85; }
+  .tv-eurosport { background: #ff4300; color: white; }
+  .tv-lequipe   { background: #ffd700; color: #111; }
+  .tv-gcn       { background: #cc0000; color: white; }
+
+  /* TV badges petits (dans les cartes) */
+  .card-tv {
+    display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px;
+  }
+  .card-tv .tv-badge { font-size: 0.6rem; padding: 3px 8px; }
+
+  .btn-lire {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: var(--rose); color: white;
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 11px 22px;
+    transition: background 0.2s, gap 0.2s;
+  }
+  .btn-lire:hover { background: var(--rose-vif); gap: 14px; }
+
+  .une-side {
+    background: linear-gradient(160deg, var(--marine-l), var(--marine-m));
+    padding: 32px 28px;
+    display: flex; flex-direction: column; justify-content: center; gap: 6px;
+    border-left: 1px solid rgba(232,41,110,0.15);
+  }
+
+  .une-side-title {
+    font-size: 0.65rem; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--rose);
+    font-weight: 600; margin-bottom: 10px;
+  }
+
+  .fact-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.07); gap: 12px;
+  }
+  .fact-row:last-child { border-bottom: none; }
+  .fact-key { font-size: 0.72rem; color: var(--gris); }
+  .fact-val { font-size: 0.88rem; font-weight: 600; color: var(--blanc); text-align: right; }
+  .fact-val.rose { color: var(--rose-vif); }
+
+  /* ══ GRILLE 3 ══ */
+  .grid-3 {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 18px; margin-bottom: 44px;
+    animation: fadeUp 0.5s ease 0.25s both;
+  }
+
+  .card {
+    background: var(--marine-m);
+    border: 1px solid rgba(232,41,110,0.1);
+    display: flex; flex-direction: column; overflow: hidden;
+    transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(232,41,110,0.4);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+  }
+
+  .card-banner { height: 4px; background: linear-gradient(90deg, var(--rose), var(--rose-vif)); opacity: 0.6; }
+  .card:hover .card-banner { opacity: 1; }
+
+  .card-top {
+    padding: 22px 22px 0;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .card-emoji { font-size: 2.2rem; line-height: 1; }
+  .card-cat { font-size: 0.62rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--rose); }
+
+  .card-body {
+    padding: 14px 22px 22px;
+    flex: 1; display: flex; flex-direction: column;
+  }
+  .card-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700; line-height: 1.3;
+    color: var(--blanc); margin-bottom: 10px;
+  }
+  .card-body p {
+    font-size: 0.85rem; line-height: 1.65; color: var(--gris); flex: 1;
+  }
+
+  .card-cta {
+    margin-top: 18px;
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--rose-vif);
+    display: flex; align-items: center; gap: 6px; transition: gap 0.2s;
+  }
+  .card:hover .card-cta { gap: 10px; }
+
+  /* ══ GRILLE 2 ══ */
+  .grid-2 {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 18px; margin-bottom: 44px;
+    animation: fadeUp 0.5s ease 0.35s both;
+  }
+  .card-wide .card-body h3 { font-size: 1.3rem; }
+
+  /* ══ FOOTER ══ */
+  footer {
+    background: var(--noir);
+    border-top: 3px solid var(--rose);
+    padding: 30px 28px; text-align: center;
+  }
+  .f-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 900; color: var(--blanc); margin-bottom: 8px;
+  }
+  .f-logo span { color: var(--rose-vif); }
+  footer p {
+    font-size: 0.75rem; letter-spacing: 1.5px;
+    text-transform: uppercase; color: rgba(255,255,255,0.3);
+  }
+  footer a { color: var(--rose); }
+  footer a:hover { color: var(--rose-vif); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 900px) {
+    .une-card { grid-template-columns: 1fr; }
+    .une-side { border-left: none; border-top: 1px solid rgba(232,41,110,0.15); }
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 580px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+    .une-text h2 { font-size: 1.5rem; }
+    .club-info h1 { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top-bar">
+    <span>🚴 ECTA Saint-Alban · Entente Cyclotouriste</span>
+    <span>Mardi 24 février 2026</span>
+  </div>
+  <div class="header-body">
+    <div class="logo-wrap">
+      <!-- ROUE : viewBox 0 0 100 100, centre cx=50 cy=50
+           Le SVG entier tourne → la rotation se fait exactement sur son centre -->
+      <svg class="roue-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="45" stroke="#e8296e" stroke-width="3.5"/>
+        <circle cx="50" cy="50" r="28" stroke="rgba(232,41,110,0.3)" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <circle cx="50" cy="50" r="7" fill="#e8296e"/>
+        <line x1="50" y1="5"  x2="50" y2="43" stroke="#e8296e" stroke-width="2"/>
+        <line x1="50" y1="57" x2="50" y2="95" stroke="#e8296e" stroke-width="2"/>
+        <line x1="5"  y1="50" x2="43" y2="50" stroke="#e8296e" stroke-width="2"/>
+        <line x1="57" y1="50" x2="95" y2="50" stroke="#e8296e" stroke-width="2"/>
+        <line x1="19" y1="19" x2="38" y2="38" stroke="#e8296e" stroke-width="2"/>
+        <line x1="62" y1="62" x2="81" y2="81" stroke="#e8296e" stroke-width="2"/>
+        <line x1="81" y1="19" x2="62" y2="38" stroke="#e8296e" stroke-width="2"/>
+        <line x1="38" y1="62" x2="19" y2="81" stroke="#e8296e" stroke-width="2"/>
+      </svg>
+      <div class="club-info">
+        <h1>ECTA <span>Saint-Alban</span></h1>
+        <p>Actualité Cyclisme · Semaine du 24 fév. au 1er mars 2026</p>
+      </div>
+    </div>
+    <div class="header-date">
+      <div class="label">Événements de la semaine</div>
+      <div class="week">🌸 Le printemps des classiques commence !</div>
+      <div class="races">
+        <span class="tag">🇧🇪 Omloop Het Nieuwsblad</span>
+        <span class="tag">🇧🇪 Kuurne-Bruxelles-Kuurne</span>
+        <span class="tag">UAE Tour ✅</span>
+        <span class="tag">Ruta del Sol ✅</span>
+        <span class="tag">Tour d'Algarve ✅</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="divider">
+  <span>🇧🇪 Omloop Het Nieuwsblad · Sam. 28 fév.</span>
+  <span class="sep">·</span>
+  <span>🇧🇪 Kuurne-Bruxelles-Kuurne · Dim. 1er mars</span>
+  <span class="sep">·</span>
+  <span>🌍 UAE Tour · Evenepoel vainqueur !</span>
+  <span class="sep">·</span>
+  <span>🇪🇸 Ruta del Sol · Sivakov conserve son titre</span>
+  <span class="sep">·</span>
+  <span>🇵🇹 Tour d'Algarve · Résultats</span>
+</div>
+
+<!-- MAIN -->
+<main>
+
+  <div class="section-label">🏆 À la une</div>
+
+  <div class="une">
+    <a class="une-card" href="https://www.omloophetnieuwsblad.be/fr" target="_blank" rel="noopener">
+      <div class="une-text">
+        <span class="une-tag">🇧🇪 Omloop Het Nieuwsblad · WorldTour · 28 fév. 2026</span>
+        <h2>L'Omloop ouvre le bal des classiques flamandes !</h2>
+        <p>
+          Le week-end d'ouverture du printemps cycliste est là ! Ce samedi 28 février, la <strong>81ᵉ édition de l'Omloop Het Nieuwsblad</strong> s'élance depuis le vélodrome 't Kuipke de <strong>Gand</strong> (départ réel 11h05) pour 207,6 km jusqu'à <strong>Ninove</strong> (arrivée ~15h52). Le tracé 2026 intègre deux nouvelles difficultés dans les 30 derniers km : le <strong>Tenbosse</strong> (500 m à 6 %) et le <strong>Parikeberg</strong> (800 m à 5 %), avant le duo final <strong>Mur de Grammont + Bosberg</strong>. Au total : 12 monts et 8 secteurs pavés. <strong>Wout Van Aert</strong> (Visma Lease a Bike) et <strong>Paul Magnier</strong> (Soudal Quick-Step) sont les grands favoris. Le tenant du titre <strong>Søren Wærenskjold</strong> (Uno-X) défend sa couronne. Et <strong>Mathieu van der Poel</strong> — l'Omloop serait dans un coin de sa tête !
+        </p>
+        <!-- TV -->
+        <div class="tv-row">
+          <span class="tv-label">📺 À suivre sur :</span>
+          <a href="https://www.eurosport.fr/" target="_blank" rel="noopener" class="tv-badge tv-eurosport">📺 Eurosport Max &amp; 1&amp;2 · 13h30</a>
+          <a href="https://www.lequipe.fr/la-chaine/" target="_blank" rel="noopener" class="tv-badge tv-lequipe">📺 La Chaîne L'Équipe · 17h15</a>
+          <a href="https://www.gcn.com/" target="_blank" rel="noopener" class="tv-badge tv-gcn">▶ GCN+</a>
+        </div>
+        <span class="btn-lire">Suivre la course →</span>
+      </div>
+      <div class="une-side">
+        <div class="une-side-title">Infos clés · Omloop Het Nieuwsblad 2026</div>
+        <div class="fact-row">
+          <span class="fact-key">Date</span>
+          <span class="fact-val">Samedi 28 fév. 2026</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Catégorie</span>
+          <span class="fact-val">WorldTour (1.UWT)</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Distance</span>
+          <span class="fact-val">207,6 km · Gand → Ninove</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Tenant du titre</span>
+          <span class="fact-val rose">Søren Wærenskjold</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Favoris 🔥</span>
+          <span class="fact-val rose">Van Aert · Magnier · MvdP ?</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Finale</span>
+          <span class="fact-val">Grammont + Bosberg</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Nouveauté</span>
+          <span class="fact-val">Tenbosse + Parikeberg</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">📺 TV</span>
+          <span class="fact-val rose">Eurosport · L'Équipe · GCN+</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- 3 CARTES RÉSULTATS -->
+  <div class="section-label">📰 Les résultats du week-end</div>
+
+  <div class="grid-3">
+
+    <a class="card" href="https://www.rtbf.be/article/le-contre-la-montre-et-la-tete-du-classement-general-remco-evenepoel-fait-coup-double-a-l-uae-tour-11680965" target="_blank" rel="noopener">
+      <div class="card-banner"></div>
+      <div class="card-top">
+        <span class="card-emoji">🏆</span>
+        <span class="card-cat">🌍 UAE Tour 2026 · Classement final</span>
+      </div>
+      <div class="card-body">
+        <h3>Evenepoel : une masterclass et un sacre aux Émirats !</h3>
+        <p>
+          <strong>Remco Evenepoel</strong> (Red Bull-BORA) remporte l'UAE Tour 2026 après une semaine de domination. Vainqueur du chrono de l'étape 2 avec 6 secondes d'avance sur <strong>Joshua Tarling</strong> et 12 s sur <strong>Rémi Cavagna</strong>, le Belge avait pris la tête au détriment d'Isaac Del Toro (+42 s). La dernière étape revenue à <strong>Raúl García Pierna</strong> (Movistar) depuis une longue échappée. Un début de saison 2026 en feu pour Evenepoel !
+        </p>
+        <div class="card-tv">
+          <span class="tv-badge tv-eurosport">📺 Eurosport Max &amp; 1&amp;2</span>
+          <span class="tv-badge tv-gcn">▶ GCN+</span>
+        </div>
+        <div class="card-cta">Lire les résultats →</div>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.cyclingstage.com/ruta-del-sol-2026/" target="_blank" rel="noopener">
+      <div class="card-banner"></div>
+      <div class="card-top">
+        <span class="card-emoji">🌹</span>
+        <span class="card-cat">🇪🇸 Ruta del Sol 2026 · 18–22 fév.</span>
+      </div>
+      <div class="card-body">
+        <h3>Sivakov encore ! Le Français conserve son titre en Andalousie</h3>
+        <p>
+          <strong>Pavel Sivakov</strong> (UAE Team Emirates-XRG) s'est imposé une nouvelle fois sur la <strong>Vuelta a Andalucía</strong> dans une finale à suspense. Le Français a repoussé toutes les attaques dans l'ultime étape pour conserver son titre 2025. Tom Pidcock, Romain Grégoire et Jan Christen figuraient parmi les principaux adversaires.
+        </p>
+        <div class="card-tv">
+          <span class="tv-badge tv-eurosport">📺 Eurosport Max &amp; 1&amp;2</span>
+        </div>
+        <div class="card-cta">Voir le classement →</div>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.total-velo.com/tour-dalgarve-2026-parcours-engages-tv/" target="_blank" rel="noopener">
+      <div class="card-banner"></div>
+      <div class="card-top">
+        <span class="card-emoji">🇵🇹</span>
+        <span class="card-cat">🇵🇹 Tour de l'Algarve · 18–22 fév.</span>
+      </div>
+      <div class="card-body">
+        <h3>Christen explose au Fóia, Almeida vs Ayuso pour le général !</h3>
+        <p>
+          Le Suisse <strong>Jan Christen</strong> (UAE Team Emirates-XRG) s'impose en solitaire au sommet de l'<strong>Alto da Fóia</strong> lors de l'étape 2. C'est le duel <strong>João Almeida</strong> (UAE) contre <strong>Juan Ayuso</strong> (Lidl-Trek, sa première course sous les nouvelles couleurs) qui a captivé la course. Le mur de <strong>Malhão</strong> (2,6 km à 9,2 %) et le chrono de Vilamoura ont fait la différence.
+        </p>
+        <div class="card-tv">
+          <span class="tv-badge tv-eurosport">📺 Eurosport Max &amp; 1&amp;2</span>
+        </div>
+        <div class="card-cta">Voir les résultats →</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- 2 CARTES À SUIVRE -->
+  <div class="section-label">🔭 À suivre ce week-end</div>
+
+  <div class="grid-2">
+
+    <a class="card card-wide" href="https://kuurne-brussel-kuurne.be/fr/accueil/" target="_blank" rel="noopener">
+      <div class="card-banner"></div>
+      <div class="card-top">
+        <span class="card-emoji">👑</span>
+        <span class="card-cat">🇧🇪 Kuurne-Bruxelles-Kuurne · 1er mars 2026</span>
+      </div>
+      <div class="card-body">
+        <h3>Van Aert veut régner à Kuurne dimanche !</h3>
+        <p>
+          Après l'Omloop samedi, le <strong>week-end d'ouverture flamand</strong> se clôture dimanche avec <strong>Kuurne-Bruxelles-Kuurne</strong> (194,9 km, Kortrijk → Kuurne). Tenant du titre, <strong>Wout van Aert</strong> (Visma Lease a Bike) cherchera le doublé. Les sprinteurs — <strong>Jasper Philipsen</strong>, <strong>Tim Merlier</strong>, <strong>Jonathan Milan</strong>, <strong>Olav Kooij</strong> — rêvent d'un sprint massif. Départ réel vers 10h30, arrivée prévue vers 16h30.
+        </p>
+        <div class="card-tv">
+          <a href="https://www.eurosport.fr/" target="_blank" rel="noopener" class="tv-badge tv-eurosport">📺 Eurosport Max &amp; 1&amp;2 · 14h30</a>
+          <a href="https://www.lequipe.fr/la-chaine/" target="_blank" rel="noopener" class="tv-badge tv-lequipe">📺 La Chaîne L'Équipe · 13h55</a>
+        </div>
+        <div class="card-cta">Programme & favoris →</div>
+      </div>
+    </a>
+
+    <a class="card card-wide" href="https://www.velofute.com/post/omloop-het-nieuwsblad-2026-parcours-engag%C3%A9s-et-favoris-de-la-81e-%C3%A9dition" target="_blank" rel="noopener">
+      <div class="card-banner"></div>
+      <div class="card-top">
+        <span class="card-emoji">🗺️</span>
+        <span class="card-cat">🇧🇪 Omloop 2026 · Analyse du parcours</span>
+      </div>
+      <div class="card-body">
+        <h3>Tenbosse + Parikeberg : un final 2026 encore plus sélectif !</h3>
+        <p>
+          Le tracé 2026 intègre deux nouveaux obstacles : le <strong>Tenbosse</strong> (500 m, 6 %, à 26 km) et le <strong>Parikeberg</strong> (800 m, 5 %, à 23 km) avant le duo final <strong>Mur de Grammont – Bosberg</strong>. Un enchaînement inédit qui conviendra aux <strong>puncheurs-baroudeurs</strong>. 25 équipes engagées, dont les 18 WorldTeams. Van Aert, Van der Poel, Stuyven et Magnier ont tous une carte à jouer.
+        </p>
+        <div class="card-tv">
+          <a href="https://www.eurosport.fr/" target="_blank" rel="noopener" class="tv-badge tv-eurosport">📺 Eurosport Max &amp; 1&amp;2 · 13h30</a>
+          <a href="https://www.lequipe.fr/la-chaine/" target="_blank" rel="noopener" class="tv-badge tv-lequipe">📺 La Chaîne L'Équipe · 17h15</a>
+        </div>
+        <div class="card-cta">Voir le parcours détaillé →</div>
+      </div>
+    </a>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">ECTA <span>Saint-Alban</span></div>
+  <p>Entente Cyclotouriste · <a href="https://ecta-saintalban.clubeo.com/" target="_blank">ecta-saintalban.clubeo.com</a> · Semaine du 24 fév. 2026</p>
+</footer>
+
+</body>
+</html>
